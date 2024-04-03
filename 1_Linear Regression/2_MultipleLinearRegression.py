@@ -54,17 +54,17 @@ print('Variance score           : %.2f' % regr.score(x_test, y_test))
 
 
 '''     Practice    '''
+# Use FUELCONSUMPTION_CITY and FUELCONSUMPTION_HWY instead of FUELCONSUMPTION_COMB
+regrn = linear_model.LinearRegression()
 # train
-xn_train = np.asanyarray(train[['FUELCONSUMPTION_CITY','FUELCONSUMPTION_HWY','FUELCONSUMPTION_COMB']])
-yn_train = np.asanyarray(train['CO2EMISSIONS'])
-regr.fit(xn_train, yn_train)
+xn_train = np.asanyarray(train[['ENGINESIZE','CYLINDERS','FUELCONSUMPTION_CITY','FUELCONSUMPTION_HWY']])
+regrn.fit(xn_train, y_train)
 #  The coefficients
-print('Coefficients             :', regr.coef_)
+print('Coefficients             :', regrn.coef_)
 
 # Evaluate/Predict
-xn_test  = np.asanyarray(test[['FUELCONSUMPTION_CITY','FUELCONSUMPTION_HWY','FUELCONSUMPTION_COMB']])
-yn_test  = np.asanyarray(test['CO2EMISSIONS'])
-yn_hat   = regr.predict(x_test)
-print("Risidual sum error       :%.2f"% np.mean((yn_hat - yn_test) ** 2))
-print('Variance score           :%.2f'% regr.score(xn_test, yn_test))
+xn_test  = np.asanyarray(test[['ENGINESIZE','CYLINDERS','FUELCONSUMPTION_CITY','FUELCONSUMPTION_HWY']])
+yn_hat   = regrn.predict(xn_test)
+print("Risidual sum error       : %.2f"% np.mean((yn_hat - y_test) ** 2))
+print('Variance score           : %.2f'% regrn.score(xn_test, y_test))
 
