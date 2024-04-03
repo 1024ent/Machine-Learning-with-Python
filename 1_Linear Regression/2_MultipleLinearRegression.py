@@ -67,4 +67,3 @@ xn_test  = np.asanyarray(test[['ENGINESIZE','CYLINDERS','FUELCONSUMPTION_CITY','
 yn_hat   = regrn.predict(xn_test)
 print("Risidual sum error       : %.2f"% np.mean((yn_hat - y_test) ** 2))
 print('Variance score           : %.2f'% regrn.score(xn_test, y_test))
-
