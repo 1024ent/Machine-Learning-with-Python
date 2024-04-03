@@ -2,11 +2,12 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
+import os
 
 '''     Reading the data    '''
 df = pd.read_csv("FuelConsumptionCo2.csv")
 
-# Print the first few rows of the DataFrame
+# # Print the first few rows of the DataFrame
 # print(df.head(10))
 
 '''     Data Exploration   '''
