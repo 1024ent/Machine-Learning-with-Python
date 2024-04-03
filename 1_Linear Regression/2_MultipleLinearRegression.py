@@ -53,3 +53,18 @@ print("Residual sum of squares  : %.2f" % np.mean((y_hat - y_test) ** 2))
 print('Variance score           : %.2f' % regr.score(x_test, y_test))
 
 
+'''     Practice    '''
+# train
+xn_train = np.asanyarray(train[['FUELCONSUMPTION_CITY','FUELCONSUMPTION_HWY','FUELCONSUMPTION_COMB']])
+yn_train = np.asanyarray(train['CO2EMISSIONS'])
+regr.fit(xn_train, yn_train)
+#  The coefficients
+print('Coefficients             :', regr.coef_)
+
+# Evaluate/Predict
+xn_test  = np.asanyarray(test[['FUELCONSUMPTION_CITY','FUELCONSUMPTION_HWY','FUELCONSUMPTION_COMB']])
+yn_test  = np.asanyarray(test['CO2EMISSIONS'])
+yn_hat   = regr.predict(x_test)
+print("Risidual sum error       :%.2f"% np.mean((yn_hat - yn_test) ** 2))
+print('Variance score           :%.2f'% regr.score(xn_test, yn_test))
+

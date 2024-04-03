@@ -84,25 +84,27 @@ print("R2-score                     : %.2f" % r2_score(test_y , test_y_) )
 
 
 '''  Train using FUELCONSUMPTION_COMB  '''
-train_x = np.asanyarray(train[['FUELCONSUMPTION_COMB']])
-train_y = np.asanyarray(train[['CO2EMISSIONS']])
-regr.fit(train_x, train_y)
+regr_n  = linear_model.LinearRegression()
+train_xn= np.asanyarray(train[['FUELCONSUMPTION_COMB']])
+regr_n.fit(train_xn, train_y)
 # The coefficients
-print('Coefficients                 :', regr.coef_)
-print('Intercept                    :', regr.intercept_)
+print('Coefficients                 :', regr_n.coef_)
+print('Intercept                    :', regr_n.intercept_)
 
 # Plot output
 plt.scatter(train.FUELCONSUMPTION_COMB ,train.CO2EMISSIONS, color='blue')
-plt.plot(train_x, regr.coef_[0][0]*train_x + regr.intercept_[0], '-r')
+plt.plot(train_xn, regr_n.coef_[0][0]*train_xn + regr_n.intercept_[0], '-r')
 plt.xlabel("FUEL CONSUMPTION")
 plt.ylabel("Emission")
 plt.show()
 
 '''  Evaluation  '''
-test_x  = np.asanyarray(test[['FUELCONSUMPTION_COMB']])
-test_y  = np.asanyarray(test[['CO2EMISSIONS']])
-test_y_ = regr.predict(test_x)
+test_xn  = np.asanyarray(test[['FUELCONSUMPTION_COMB']])
+test_yn_ = regr_n.predict(test_xn)
 
-print("Mean absolute error          : %.2f" % np.mean(np.absolute(test_y_ - test_y)))
-print("Residual sum of squares (MSE): %.2f" % np.mean((test_y_ - test_y) ** 2))
-print("R2-score                     : %.2f" % r2_score(test_y , test_y_) )
+print("Mean absolute error          : %.2f" % np.mean(np.absolute(test_yn_ - test_y)))
+print("Residual sum of squares (MSE): %.2f" % np.mean((test_yn_ - test_y) ** 2))
+print("R2-score                     : %.2f" % r2_score(test_y , test_yn_))
+
+# Result you get for comparing MAE of training using ENGINESIZE and FUELCONSUMPTION_COMB
+# The MAE is much worse when we train using ENGINESIZE than FUELCONSUMPTION_COMB
