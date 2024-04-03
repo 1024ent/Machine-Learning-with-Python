@@ -19,3 +19,10 @@ plt.scatter(cdf.ENGINESIZE, cdf.CO2EMISSIONS, color='blue')
 plt.xlabel("Engine size")
 plt.ylabel("Emissions")
 plt.show()
+
+'''     Creating train and test dataset     '''
+msk     = np.random.rand(len(cdf)) < 0.8
+train   = [msk]
+test    = [~msk]
+
+'''     Polynomial regression   '''
