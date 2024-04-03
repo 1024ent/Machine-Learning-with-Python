@@ -1,28 +1,22 @@
 import requests
 import os
 
-# URL of the CSV file
-url = 'https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-ML0101EN-SkillsNetwork/labs/Module%202/data/FuelConsumptionCo2.csv'
+def download_csv(url, file_name):
+    response = requests.get(url)
+    if response.status_code == 200:
+        with open(file_name, 'w') as f:
+            f.write(response.text)
+        print(f"CSV file '{file_name}' downloaded successfully")
+    else:
+        print(f"Failed to download CSV file from '{url}'")
 
-# Get the current working directory
-current_directory = os.getcwd()
+# URLs and file names
+urls_and_filenames = [
+    ('https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-ML0101EN-SkillsNetwork/labs/Module%202/data/FuelConsumptionCo2.csv', 'FuelConsumptionCo2.csv'),
+    ('https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-ML0101EN-SkillsNetwork/labs/Module%202/data/china_gdp.csv', 'china_gdp.csv')
+]
 
-# Specify the path where you want to save the file
-file_path = os.path.join(current_directory, 'FuelConsumptionCo2.csv')
+# Download CSV files
+for url, filename in urls_and_filenames:
+    download_csv(url, filename)
 
-# Send an HTTP GET request to the URL
-response = requests.get(url)
-
-# Check if the request was successful (status code 200)
-if response.status_code == 200:
-    # Get the content of the response (the CSV data)
-    csv_data = response.text
-
-    # Save the CSV data to a file
-    with open('FuelConsumptionCo2.csv', 'w') as f:
-        f.write(csv_data)
-
-    print("CSV file downloaded successfully")
-
-else:
-    print("Failed to download CSV file")
