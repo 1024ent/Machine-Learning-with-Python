@@ -1,0 +1,194 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Credit Card Fraud Detection | Kaggle</title>
+  <meta charset="utf-8" />
+    <meta name="robots" content="index, follow" />
+  <meta name="description" content="Anonymized credit card transactions labeled as fraudulent or genuine" />
+  <meta name="turbolinks-cache-control" content="no-cache" />
+    <meta name="keywords" content="finance,crime" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
+  <meta name="theme-color" content="#008ABC" />
+  <script nonce="Ci7gA77RBxtzH41CU8xc6A==" type="text/javascript">
+    window["pageRequestStartTime"] = 1712409246079;
+    window["pageRequestEndTime"] = 1712409246193;
+    window["initialPageLoadStartTime"] = new Date().getTime();
+  </script>
+  <script nonce="Ci7gA77RBxtzH41CU8xc6A==" id="gsi-client" src="https://accounts.google.com/gsi/client" async defer></script>
+  <script nonce="Ci7gA77RBxtzH41CU8xc6A==">window.KAGGLE_JUPYTERLAB_PATH = "/static/assets/jupyterlab/jupyterlab-index-0497beb6ae1b7d43c42d.html";</script>
+  <link rel="preconnect" href="https://www.google-analytics.com" crossorigin="anonymous" /><link rel="preconnect" href="https://stats.g.doubleclick.net" /><link rel="preconnect" href="https://storage.googleapis.com" /><link rel="preconnect" href="https://apis.google.com" />
+  <link href="/static/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+  <link rel="manifest" href="/static/json/manifest.json" crossorigin="use-credentials">
+
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link href="https://fonts.googleapis.com/css?family=Inter:400,400i,500,500i,600,600i,700,700i&display=swap"
+    rel="preload" as="style" />
+  <link href="https://fonts.googleapis.com/css2?family=Google+Symbols:FILL@0..1&display=block"
+    rel="preload" as="style" />
+  <link href="https://fonts.googleapis.com/css?family=Inter:400,400i,500,500i,600,600i,700,700i&display=swap"
+    rel="stylesheet" media="print" id="async-google-font-1" />
+  <link href="https://fonts.googleapis.com/css2?family=Google+Symbols:FILL@0..1&display=block"
+    rel="stylesheet" media="print" id="async-google-font-2" />
+  <script nonce="Ci7gA77RBxtzH41CU8xc6A==" type="text/javascript">
+    const styleSheetIds = ["async-google-font-1", "async-google-font-2"];
+    styleSheetIds.forEach(function (id) {
+      document.getElementById(id).addEventListener("load", function() {
+        this.media = "all";
+      });
+    });
+  </script>
+
+  <script nonce="Ci7gA77RBxtzH41CU8xc6A==" src="https://www.google.com/recaptcha/enterprise.js?render=6LcW02cpAAAAAJlaJemsQQEwAiTEYB4aR6FYE_rD&waf=session" async defer></script>
+   <style>.grecaptcha-badge { visibility: hidden; }</style>
+
+    <link rel="canonical" href="https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud" />
+    <link rel="stylesheet" type="text/css" href="/static/assets/vendor.css?v=dne" />
+    <link rel="stylesheet" type="text/css" href="/static/assets/app.css?v=d42a14acad2e5a1bfac8" />
+
+  
+    
+ 
+      <script nonce="Ci7gA77RBxtzH41CU8xc6A==">
+        try{(function(a,s,y,n,c,h,i,d,e){d=s.createElement("style");
+        d.appendChild(s.createTextNode(""));s.head.appendChild(d);d=d.sheet;
+        y=y.map(x => d.insertRule(x + "{ opacity: 0 !important }"));
+        h.start=1*new Date;h.end=i=function(){y.forEach(x => x<d.cssRules.length ? d.deleteRule(x) : {})};
+        (a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
+        })(window,document,['.site-header-react__nav'],'dataLayer',2000,{'GTM-52LNT9S':true});}catch(ex){}
+    </script>
+    <script nonce="Ci7gA77RBxtzH41CU8xc6A==">
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-T7QHS60L4Q', {
+            'optimize_id': 'GTM-52LNT9S',
+            'displayFeaturesTask': null,
+            'send_page_view': false,
+            'content_group1': 'Datasets'
+        });
+    </script>
+    <script nonce="Ci7gA77RBxtzH41CU8xc6A==" async src="https://www.googletagmanager.com/gtag/js?id=G-T7QHS60L4Q"></script>
+
+  
+    
+    <meta property="og:url" content="https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud" />
+    <meta property="og:title" content="Credit Card Fraud Detection" />
+    <meta property="og:description" content="Anonymized credit card transactions labeled as fraudulent or genuine" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://storage.googleapis.com/kaggle-datasets-images/310/684/3503c6c827ca269cc00ffa66f2a9c207/dataset-card.jpg" />
+    <meta property="fb:app_id" content="2665027677054710" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@kaggledatasets" />
+
+
+  <meta name="twitter:site" content="@Kaggle" /> 
+  
+    
+            <script nonce="Ci7gA77RBxtzH41CU8xc6A==" type="application/ld+json">{"@context":"http://schema.org/","@type":"Dataset","name":"Credit Card Fraud Detection","description":"Context\n---------\n\nIt is important that credit card companies are able to recognize fraudulent credit card transactions so that customers are not charged for items that they did not purchase.\n\nContent\n---------\n\nThe dataset contains transactions made by credit cards in September 2013 by European cardholders. \nThis dataset presents transactions that occurred in two days, where we have 492 frauds out of 284,807 transactions. The dataset is highly unbalanced, the positive class (frauds) account for 0.172% of all transactions.\n\nIt contains only numerical input variables which are the result of a PCA transformation. Unfortunately, due to confidentiality issues, we cannot provide the original features and more background information about the data. Features V1, V2, ... V28 are the principal components obtained with PCA, the only features which have not been transformed with PCA are 'Time' and 'Amount'. Feature 'Time' contains the seconds elapsed between each transaction and the first transaction in the dataset. The feature 'Amount' is the transaction Amount, this feature can be used for example-dependant cost-sensitive learning. Feature 'Class' is the response variable and it takes value 1 in case of fraud and 0 otherwise. \n\nGiven the class imbalance ratio, we recommend measuring the accuracy using the Area Under the Precision-Recall Curve (AUPRC). Confusion matrix accuracy is not meaningful for unbalanced classification.\n\nUpdate (03/05/2021)\n---------\n\nA simulator for transaction data has been released as part of the practical handbook on Machine Learning for Credit Card Fraud Detection - https://fraud-detection-handbook.github.io/fraud-detection-handbook/Chapter_3_GettingStarted/SimulatedDataset.html. We invite all practitioners interested in fraud detection datasets to also check out this data simulator, and the methodologies for credit card fraud detection presented in the book.\n\nAcknowledgements\n---------\n\nThe dataset has been collected and analysed during a research collaboration of Worldline and the Machine Learning Group (http://mlg.ulb.ac.be) of ULB (Université Libre de Bruxelles) on big data mining and fraud detection.\nMore details on current and past projects on related topics are available on [https://www.researchgate.net/project/Fraud-detection-5][1] and the page of the [DefeatFraud][2] project\n\nPlease cite the following works: \n\nAndrea Dal Pozzolo, Olivier Caelen, Reid A. Johnson and Gianluca  Bontempi. [Calibrating Probability with Undersampling for Unbalanced  Classification.][3] In Symposium on Computational Intelligence and Data  Mining (CIDM), IEEE, 2015\n\nDal Pozzolo, Andrea; Caelen, Olivier; Le Borgne, Yann-Ael; Waterschoot, Serge; Bontempi, Gianluca.  [Learned lessons in credit  card fraud detection from a practitioner perspective][4], Expert systems with applications,41,10,4915-4928,2014, Pergamon\n\nDal Pozzolo, Andrea; Boracchi, Giacomo; Caelen, Olivier; Alippi,  Cesare; Bontempi, Gianluca. [Credit card fraud detection: a realistic modeling and a novel learning strategy,][5]  IEEE transactions on neural networks and learning systems,29,8,3784-3797,2018,IEEE\n\nDal Pozzolo, Andrea [Adaptive Machine learning for credit card fraud detection][6] ULB MLG PhD thesis (supervised by G. Bontempi)\n\nCarcillo, Fabrizio; Dal Pozzolo, Andrea; Le Borgne, Yann-Aël; Caelen, Olivier; Mazzer, Yannis; Bontempi, Gianluca. [Scarff: a scalable  framework for streaming credit card fraud detection with Spark][7], Information fusion,41, 182-194,2018,Elsevier\n\nCarcillo, Fabrizio; Le Borgne, Yann-Aël; Caelen, Olivier; Bontempi, Gianluca. [Streaming active learning strategies for real-life credit card fraud detection: assessment and visualization,][8] International Journal of Data Science and Analytics, 5,4,285-300,2018,Springer International Publishing\n\nBertrand Lebichot, Yann-Aël Le Borgne, Liyun He, Frederic Oblé, Gianluca Bontempi [Deep-Learning Domain Adaptation Techniques for Credit Cards Fraud Detection](https://www.researchgate.net/publication/332180999_Deep-Learning_Domain_Adaptation_Techniques_for_Credit_Cards_Fraud_Detection),  INNSBDDL 2019: Recent Advances in Big Data and Deep Learning, pp 78-88, 2019\n\nFabrizio Carcillo, Yann-Aël Le Borgne, Olivier Caelen, Frederic Oblé, Gianluca Bontempi [Combining Unsupervised and Supervised Learning in Credit Card Fraud Detection ](https://www.researchgate.net/publication/333143698_Combining_Unsupervised_and_Supervised_Learning_in_Credit_Card_Fraud_Detection) Information Sciences, 2019\n\nYann-Aël Le Borgne, Gianluca Bontempi [Reproducible machine Learning for Credit Card Fraud Detection - Practical Handbook ](https://www.researchgate.net/publication/351283764_Machine_Learning_for_Credit_Card_Fraud_Detection_-_Practical_Handbook) \n\nBertrand Lebichot, Gianmarco Paldino, Wissam Siblini, Liyun He, Frederic Oblé, Gianluca Bontempi [Incremental learning strategies for credit cards fraud detection](https://www.researchgate.net/publication/352275169_Incremental_learning_strategies_for_credit_cards_fraud_detection),  IInternational Journal of Data Science and Analytics\n\n  [1]: https://www.researchgate.net/project/Fraud-detection-5\n  [2]: https://mlg.ulb.ac.be/wordpress/portfolio_page/defeatfraud-assessment-and-validation-of-deep-feature-engineering-and-learning-solutions-for-fraud-detection/\n  [3]: https://www.researchgate.net/publication/283349138_Calibrating_Probability_with_Undersampling_for_Unbalanced_Classification\n  [4]: https://www.researchgate.net/publication/260837261_Learned_lessons_in_credit_card_fraud_detection_from_a_practitioner_perspective\n  [5]: https://www.researchgate.net/publication/319867396_Credit_Card_Fraud_Detection_A_Realistic_Modeling_and_a_Novel_Learning_Strategy\n  [6]: http://di.ulb.ac.be/map/adalpozz/pdf/Dalpozzolo2015PhD.pdf\n  [7]: https://www.researchgate.net/publication/319616537_SCARFF_a_Scalable_Framework_for_Streaming_Credit_Card_Fraud_Detection_with_Spark\n  \n[8]: https://www.researchgate.net/publication/332180999_Deep-Learning_Domain_Adaptation_Techniques_for_Credit_Cards_Fraud_Detection","url":"https://www.kaggle.com/mlg-ulb/creditcardfraud","version":3,"keywords":["subject, people and society, business, finance","subject, people and society, law, government, crime"],"license":{"@type":"CreativeWork","name":"Database: Open Database, Contents: Database Contents","url":"http://opendatacommons.org/licenses/dbcl/1.0/"},"identifier":["310"],"includedInDataCatalog":{"@type":"DataCatalog","name":"Kaggle","url":"https://www.kaggle.com"},"creator":{"@type":"Organization","name":"Machine Learning Group - ULB","url":"https://www.kaggle.com/organizations/mlg-ulb","image":"https://storage.googleapis.com/kaggle-organizations/1160/thumbnail.png%3Fr=153"},"distribution":[{"@type":"DataDownload","requiresSubscription":true,"encodingFormat":"zip","fileFormat":"zip","contentUrl":"https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud/download?datasetVersionNumber=3","contentSize":"69155672 bytes"}],"commentCount":105,"dateModified":"2018-03-23T01:17:27.913Z","discussionUrl":"https://www.kaggle.com/mlg-ulb/creditcardfraud/discussion","alternateName":"Anonymized credit card transactions labeled as fraudulent or genuine","isAccessibleForFree":true,"thumbnailUrl":"https://storage.googleapis.com/kaggle-datasets-images/310/684/3503c6c827ca269cc00ffa66f2a9c207/dataset-card.jpg","interactionStatistic":[{"@type":"InteractionCounter","interactionType":"http://schema.org/CommentAction","userInteractionCount":105},{"@type":"InteractionCounter","interactionType":"http://schema.org/DownloadAction","userInteractionCount":670845},{"@type":"InteractionCounter","interactionType":"http://schema.org/ViewAction","userInteractionCount":10867804},{"@type":"InteractionCounter","interactionType":"http://schema.org/LikeAction","userInteractionCount":11168}]}</script>
+        
+
+  
+    
+
+  
+    
+
+
+    <script nonce="Ci7gA77RBxtzH41CU8xc6A==">window['useKaggleAnalytics'] = true;</script>
+
+  <script id="gapi-target" nonce="Ci7gA77RBxtzH41CU8xc6A==" src="https://apis.google.com/js/api.js" defer
+    async></script>
+  <script nonce="Ci7gA77RBxtzH41CU8xc6A==" src="/static/assets/runtime.js?v=67a0b6ddda2db212e5bb" data-turbolinks-track="reload"></script>
+  <script nonce="Ci7gA77RBxtzH41CU8xc6A==" src="/static/assets/vendor.js?v=2edca12929552d93c5db" data-turbolinks-track="reload"></script>
+  <script nonce="Ci7gA77RBxtzH41CU8xc6A==" src="/static/assets/app.js?v=1d2f39c032909e684cde" data-turbolinks-track="reload"></script>
+    <script nonce="Ci7gA77RBxtzH41CU8xc6A==" type="text/javascript">
+      window.kaggleStackdriverConfig = {
+        key: 'AIzaSyA4eNqUdRRskJsCZWVz-qL655Xa5JEMreE',
+        projectId: 'kaggle-161607',
+        service: 'web-fe',
+        version: 'ci',
+        userId: '0'
+      }
+    </script>
+</head>
+
+<body data-turbolinks="false">
+  <main>
+    
+
+
+
+
+
+<div id="site-container"></div>
+
+<div id="site-body" class="hide">
+    
+
+
+<script nonce="Ci7gA77RBxtzH41CU8xc6A==" type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+    preferredFont: "TeX",
+    availableFonts: ["STIX", "TeX"],
+    linebreaks: {
+    automatic: true
+    },
+    EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+    inlineMath: [["\\(", "\\)"], ["\\\\(", "\\\\)"]],
+    displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+    processEscapes: true,
+    ignoreClass: "tex2jax_ignore|dno"
+    },
+    TeX: {
+    noUndefined: {
+    attributes: {
+    mathcolor: "red",
+    mathbackground: "#FFEEEE",
+    mathsize: "90%"
+    }
+    }
+    },
+    Macros: {
+    href: "{}"
+    },
+    skipStartupTypeset: true,
+    messageStyle: "none",
+    extensions: ["Safe.js"],
+    });
+</script>
+<script type="text/javascript" nonce="Ci7gA77RBxtzH41CU8xc6A==">
+  window.addEventListener("DOMContentLoaded", () => {
+    const head = document.getElementsByTagName("head")[0];
+    const lib = document.createElement("script");
+    lib.type = "text/javascript";
+    // Always use the production asset in local dev, which is served from GCS. We tried to proxy and / or serve this
+    // in a better way in localhost, but it didn't work out. See b/328073416#comment8 for details.
+    const forceProdHost = window.location.hostname === "localhost";
+    lib.src = `${forceProdHost ? "https://www.kaggle.com" : ""}/static/mathjax/2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML`;
+    head.appendChild(lib);
+  });
+</script>
+
+
+
+
+
+
+</div>
+
+
+
+
+  </main>
+</body>
+
+</html>
