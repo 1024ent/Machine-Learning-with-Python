@@ -12,7 +12,9 @@ def download_csv(url, file_name):
 urls_and_filenames = [
     ('https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-ML0101EN-SkillsNetwork/labs/Module%203/data/teleCust1000t.csv', 'teleCust1000t.csv'),
     ('https://www.kaggle.com/mlg-ulb/creditcardfraud', 'creditcardfraud.csv'),
-    ('https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-ML0101EN-SkillsNetwork/labs/Module%203/data/yellow_tripdata_2019-06.csv', 'yellow_tripdata_2019-06.csv')
+    ('https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-ML0101EN-SkillsNetwork/labs/Module%203/data/yellow_tripdata_2019-06.csv', 'yellow_tripdata_2019-06.csv'),
+    ('https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-ML0101EN-SkillsNetwork/labs/Module%203/data/drug200.csv','drug200.csv'),
+    ('https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-ML0101EN-SkillsNetwork/labs/Module%203/data/real_estate_data.csv','real_estate_data.csv')
 ]
 
 for url, filename in urls_and_filenames:
