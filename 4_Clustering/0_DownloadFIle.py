@@ -10,7 +10,8 @@ def download_csv(url, file_name):
         print(f"Failed to download CSV file from '{url}'")
 
 urls_and_filenames = [
-    ('https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-ML0101EN-SkillsNetwork/labs/Module%204/data/Cust_Segmentation.csv','Cust_Segmentation.csv')
+    ('https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-ML0101EN-SkillsNetwork/labs/Module%204/data/Cust_Segmentation.csv','Cust_Segmentation.csv'),
+    ('https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-ML0101EN-SkillsNetwork/labs/Module%204/data/cars_clus.csv','cars_clus.csv')
 ]
 
 for url, filename in urls_and_filenames:
