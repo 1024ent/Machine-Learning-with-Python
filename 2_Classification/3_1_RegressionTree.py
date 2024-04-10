@@ -23,7 +23,7 @@ Y = data["MEDV"]
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=.2 , random_state= 1)
 
 '''  Create Regression Tree  '''
-regression_tree = DecisionTreeRegressor(criterion = "friedman_mse")
+regression_tree = DecisionTreeRegressor(criterion = "squared_error")
 
 '''  Training  '''
 regression_tree.fit(X_train, Y_train)
