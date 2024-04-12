@@ -42,7 +42,7 @@ plt.hist(big_raw_data.Amount.values, 6, histtype='bar', facecolor='g')
 plt.show()
 print("Minimum amount value is ", np.min(big_raw_data.Amount.values))
 print("Maximum amount value is ", np.max(big_raw_data.Amount.values))
-print("90% of the transactions have an amount less or equal than ", np.percentile(raw_data.Amount.values, 90))
+print("90% of the transactions have an amount less or equal than ", np.percentile(big_raw_data.Amount.values, 90))
 
 ''' Data Preprocessing '''
 # data preprocessing such as scaling/normalization is typically useful for 
