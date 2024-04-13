@@ -3,7 +3,8 @@ import numpy as np
 import pandas as pd
 from scipy import ndimage 
 from scipy.cluster import hierarchy 
-from scipy.spatial.distance import pdist
+from scipy.spatial import distance_matrix
+from scipy.spatial.distance import squareform 
 from matplotlib import pyplot as plt 
 from sklearn import manifold, datasets 
 from sklearn.cluster import AgglomerativeClustering 
@@ -50,14 +51,17 @@ plt.scatter(X1[:, 0], X1[:, 1], marker='.')
 plt.show()
 
 '''  Dendrogram Associated for the Agglomerative Hierarchical Clustering  '''
-dist_matrix = pdist(X1)
-print(dist_matrix)
+# Compute the distance matrix
+dist_matrix = distance_matrix(X1, X1)
 
-Z = hierarchy.linkage(dist_matrix, 'complete')
+# Convert the distance matrix to condensed form
+condensed_dist = squareform(dist_matrix)
+
+Z = hierarchy.linkage(condensed_dist, 'complete')
 dendro = hierarchy.dendrogram(Z)
 
 '''  Practice  '''
-Z = hierarchy.linkage(dist_matrix, 'average')
+Z = hierarchy.linkage(condensed_dist, 'average')
 dendro = hierarchy.dendrogram(Z)
 
 
@@ -91,16 +95,22 @@ print(feature_mtx [0:5])
 
 '''  Clustering using Scipy  '''
 import scipy
+
 leng = feature_mtx.shape[0]
-D = np.zeros([leng,leng])
+
+# Compute the distance matrix
+D = np.zeros([leng, leng])
 for i in range(leng):
     for j in range(leng):
-        D[i,j] = scipy.spatial.distance.euclidean(feature_mtx[i], feature_mtx[j])
-print(D)
+        D[i, j] = scipy.spatial.distance.euclidean(feature_mtx[i], feature_mtx[j])
+
+# Convert the distance matrix to condensed form
+condensed_dist = squareform(D)
+print(condensed_dist)
 
 import pylab
 import scipy.cluster.hierarchy
-Z = hierarchy.linkage(D, 'complete')
+Z = hierarchy.linkage(condensed_dist, 'complete')
 
 from scipy.cluster.hierarchy import fcluster
 max_d = 3
@@ -120,10 +130,19 @@ dendro = hierarchy.dendrogram(Z,  leaf_label_func=llf, leaf_rotation=0, leaf_fon
 
 '''  Clustering using scikit-learn  '''
 from sklearn.metrics.pairwise import euclidean_distances
-dist_matrix = euclidean_distances(feature_mtx,feature_mtx) 
-print(dist_matrix)
+import warnings
+# Compute the distance matrix
+dist_matrix = euclidean_distances(feature_mtx, feature_mtx)
 
-Z_using_dist_matrix = hierarchy.linkage(dist_matrix, 'complete')
+# Check the shape of dist_matrix
+print("Shape of dist_matrix:", dist_matrix.shape)
+
+# Suppress the specific warning
+with warnings.catch_warnings():
+    warnings.simplefilter("ignore", category=UserWarning)  # Adjust the warning category as needed
+    Z_using_dist_matrix = hierarchy.linkage(dist_matrix, 'complete')
+
+# Now you can use Z_using_dist_matrix for further analysis or visualization
 
 fig = pylab.figure(figsize=(18,50))
 def llf(id):
@@ -131,10 +150,14 @@ def llf(id):
     
 dendro = hierarchy.dendrogram(Z_using_dist_matrix,  leaf_label_func=llf, leaf_rotation=0, leaf_font_size =12, orientation = 'right')
 
-agglom = AgglomerativeClustering(n_clusters = 6, linkage = 'complete')
-agglom.fit(dist_matrix)
+# Suppress the specific warning
+with warnings.catch_warnings():
+    warnings.simplefilter("ignore", category=UserWarning)  # Adjust the warning category as needed
+    agglom = AgglomerativeClustering(n_clusters=6, linkage='complete')
+    agglom.fit(dist_matrix)
 
-print(agglom.labels_)
+# Get the cluster labels
+labels = agglom.labels_
 
 pdf['cluster_'] = agglom.labels_
 print(pdf.head())
@@ -151,7 +174,7 @@ for color, label in zip(colors, cluster_labels):
     subset = pdf[pdf.cluster_ == label]
     for i in subset.index:
             plt.text(subset.horsepow[i], subset.mpg[i],str(subset['model'][i]), rotation=25) 
-    plt.scatter(subset.horsepow, subset.mpg, s= subset.price*10, c=color, label='cluster'+str(label),alpha=0.5)
+    plt.scatter(subset.horsepow, subset.mpg, s= subset.price*10, color=color, label='cluster'+str(label),alpha=0.5)
 #    plt.scatter(subset.horsepow, subset.mpg)
 plt.legend()
 plt.title('Clusters')
@@ -165,14 +188,12 @@ agg_cars = pdf.groupby(['cluster_', 'type'])[['horsepow', 'engine_s', 'mpg', 'pr
 
 print(agg_cars)
 
-plt.figure(figsize=(16,10))
+plt.figure(figsize=(16, 10))
 for color, label in zip(colors, cluster_labels):
     subset = agg_cars.loc[(label,),]
-    for i in subset.index:
-        values = subset.iloc[i].values  # Assuming i is a valid index
-        plt.text(values[0]+5, values[2], 'type='+str(int(i)) + ', price='+str(int(values[3]))+'k')
-    plt.scatter(subset.horsepow, subset.mpg, s=subset.price*10, color='blue', label='cluster'+str(label),alpha=0.5)
-
+    for i in range(len(subset)):  # Iterate over the range of the length of subset
+        plt.text(subset.iloc[i, 0] + 5, subset.iloc[i, 2], 'type=' + str(int(subset.index[i])) + ', price=' + str(int(subset.iloc[i, 3])) + 'k')
+    plt.scatter(subset.horsepow, subset.mpg, s=subset.price * 20, color=color, label='cluster' + str(label))
 plt.legend()
 plt.title('Clusters')
 plt.xlabel('horsepow')
