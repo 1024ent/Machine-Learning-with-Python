@@ -1,0 +1,21 @@
+For Windows:
+1. Open command promp or terminal in VS Code
+2. If python is not installed type: 
+   go to this website to download python: https://www.python.org/downloads/windows/
+   Then run the installer
+
+For Linux(Ubuntu):
+1. Open terminal
+2. If python is not installed type: sudo apt update
+   then press enter
+   then type: sudo apt install python3
+   then press enter
+
+For both Windows and Linux:
+After you installed python you need to install these libraries, copy the text below and paste in on command promp(Windows), terminal(Linux) then press enter:
+pip install matplotlib
+pip install pandas
+pip install numpy
+pip install scipy
+pip install scikit-learn
+pip install snapml
