@@ -27,5 +27,3 @@ This repository provides a hands-on introduction to machine learning algorithms 
 * Raise issues or contribute improvements to the repository.
 
 **Let's learn machine learning together!**
-
-This description is simple and informative, highlighting the purpose of the repository, its content, target audience, and how to get started. It also encourages users to contribute and learn collaboratively. 
