@@ -1,3 +1,7 @@
+**About these repository**
+This repository is based on the Machine Learning with Python by IBM.
+All code errors in the lab are fixed
+
 **Learn Machine Learning with Python**
 
 This repository provides a hands-on introduction to machine learning algorithms using popular Python libraries like pandas, scikit-learn, and matplotlib. 
