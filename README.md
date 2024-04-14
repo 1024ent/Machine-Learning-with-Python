@@ -23,7 +23,7 @@ This repository provides a hands-on introduction to machine learning algorithms 
 **Getting Started:**
 
 1. Clone this repository.
-2. Install the required libraries (instructions provided in a README file).
+2. Install the required libraries (instructions provided in a 0_IntroVideos).
 3. Follow the code examples or use them as a foundation for your own machine learning projects.
 
 **Feel free to:**
