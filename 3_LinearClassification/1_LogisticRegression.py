@@ -1,3 +1,9 @@
+'''
+Author          : Loo Hui Kie
+Contributors    : -
+Title           : Logistic Regression
+Date Released   : 15/4/2024
+'''
 ''' Import library  '''
 import matplotlib.pyplot as plt
 import pandas as pd

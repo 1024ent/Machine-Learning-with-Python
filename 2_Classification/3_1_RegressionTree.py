@@ -1,3 +1,9 @@
+'''
+Author          : Loo Hui Kie
+Contributors    : -
+Title           : Regression Tree
+Date Released   : 15/4/2024
+'''
 '''  Import libraries  '''
 import pandas as pd
 from sklearn.tree import DecisionTreeRegressor

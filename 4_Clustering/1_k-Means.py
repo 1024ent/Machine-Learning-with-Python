@@ -1,3 +1,9 @@
+'''
+Author          : Loo Hui Kie
+Contributors    : -
+Title           : K-Means
+Date Released   : 15/4/2024
+'''
 '''  Import library  '''
 import random
 import numpy as np

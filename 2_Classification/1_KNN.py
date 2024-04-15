@@ -1,5 +1,11 @@
+'''
+Author          : Loo Hui Kie
+Contributors    : -
+Title           : K-Nearest Neighbours
+Date Released   : 15/4/2024
+'''
 # KNN (K-Nearest Neighbours) - This code implements the K-Nearest Neighbors algorithm
-
+'''  Impoer library  '''
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd

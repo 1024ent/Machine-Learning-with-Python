@@ -1,3 +1,9 @@
+'''
+Author          : Loo Hui Kie
+Contributors    : -
+Title           : Decission Tree
+Date Released   : 15/4/2024
+'''
 '''  Import Libraries  '''
 import matplotlib.pyplot as plt
 import numpy as np

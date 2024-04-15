@@ -1,3 +1,10 @@
+'''
+Author          : Loo Hui Kie
+Contributors    : -
+Title           : Non-linear Regression
+Date Released   : 15/4/2024
+'''
+''' Import library'''
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd

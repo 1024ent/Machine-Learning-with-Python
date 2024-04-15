@@ -1,3 +1,9 @@
+'''
+Author          : Loo Hui Kie
+Contributors    : -
+Title           : Multiple Linear Regression
+Date Released   : 15/4/2024
+'''
 '''  Import libraries  '''
 import matplotlib.pyplot as plt
 import pandas as pd

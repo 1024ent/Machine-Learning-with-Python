@@ -1,3 +1,9 @@
+'''
+Author          : Loo Hui Kie
+Contributors    : -
+Title           : Hierarchical Clustering 
+Date Released   : 15/4/2024
+'''
 '''  Import library  '''
 import numpy as np 
 import pandas as pd

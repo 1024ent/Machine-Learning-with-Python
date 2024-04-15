@@ -1,4 +1,11 @@
+'''
+Author          : Loo Hui Kie
+Contributors    : -
+Title           : More Non-linear Regression example
+Date Released   : 15/4/2024
+'''
 # Exploring Non-Linear Regression Functions with examples
+'''  Import library  '''
 import matplotlib.pyplot as plt
 import numpy as np
 

@@ -1,3 +1,9 @@
+'''
+Author          : Loo Hui Kie
+Contributors    : -
+Title           : Simple Linear Regression
+Date Released   : 15/4/2024
+'''
 ''' import necessary library '''
 import matplotlib.pyplot as plt
 import pandas as pd

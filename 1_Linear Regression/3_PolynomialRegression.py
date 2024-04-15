@@ -1,3 +1,9 @@
+'''
+Author          : Loo Hui Kie
+Contributors    : -
+Title           : Polynomial Regression
+Date Released   : 15/4/2024
+'''
 '''     Import Libraries    '''
 import matplotlib.pyplot as plt
 import numpy as np

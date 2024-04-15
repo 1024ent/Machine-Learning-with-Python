@@ -1,3 +1,9 @@
+'''
+Author          : Loo Hui Kie
+Contributors    : -
+Title           : Multiclass Prediction
+Date Released   : 15/4/2024
+'''
 # Softmax Regression ,One-vs-All & One-vs-One for Multi-class Classification
 ''' Import library  '''
 import matplotlib.pyplot as plt

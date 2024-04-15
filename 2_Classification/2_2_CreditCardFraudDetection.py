@@ -1,3 +1,9 @@
+'''
+Author          : Loo Hui Kie
+Contributors    : -
+Title           : Credit Card Fraud Detection using Decission Tree
+Date Released   : 15/4/2024
+'''
 '''  Import library  '''
 from __future__ import print_function
 import numpy as np

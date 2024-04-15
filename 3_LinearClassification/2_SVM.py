@@ -1,3 +1,9 @@
+'''
+Author          : Loo Hui Kie
+Contributors    : -
+Title           : Support Vector Machine
+Date Released   : 15/4/2024
+'''
 '''  Import library  '''
 import matplotlib.pyplot as plt
 import numpy as np
